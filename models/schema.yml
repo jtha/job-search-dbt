@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: job_scoring
+    description: Summary of job scoring by job_id
+    columns:
+      - name: job_id
+        data_tests:
+          - unique
+          - not_null
+      - name: first_run_date
+        data_tests:
+          - not null
