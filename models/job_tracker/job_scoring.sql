@@ -72,7 +72,7 @@ with
                 / nullif(rf.additional_count, 0),
                 0
             ) as additional_match_ratio
-        from j{{ source('job_tracker', 'job_details') }} jd
+        from {{ source('job_tracker', 'job_details') }} jd
         left join raw_skills_final rf on jd.job_id = rf.job_id
         left join final_first_run fr on jd.job_id = fr.job_id
         where rf.required_count > 0 or rf.required_count is not null
