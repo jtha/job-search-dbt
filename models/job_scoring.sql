@@ -83,11 +83,11 @@ select
     case
         when required_match_ratio >= 0.8
         then 'high'
-        when required_match_ratio >= 0.7 and required_match_count >= 7
+        when required_match_ratio >= 0.7 and required_match_count >= 5
         then 'medium'
-        when required_match_ratio >= 0.6 and required_match_count >= 8
+        when required_match_ratio >= 0.6 and required_match_count >= 6
         then 'medium'
-        when required_match_ratio >= 0.5 and required_match_count >= 9
+        when required_match_ratio >= 0.5 and required_match_count >= 7
         then 'medium'
         else 'low'
     end as job_score
