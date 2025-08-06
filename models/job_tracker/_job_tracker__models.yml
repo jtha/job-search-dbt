@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: job_scoring
+    description: Summary of job scoring by job_id
+    columns:
+      - name: job_id
+        description: Unique identifier for the job.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: first_run_date
+        description: Date of the first run for this job_id.
+        data_tests:
+          - not_null
+
+      - name: required_count
+        description: Number of required qualifications for the job.
+
+      - name: additional_count
+        description: Number of additional qualifications for the job.
+
+      - name: evaluated_count
+        description: Number of evaluated qualifications for the job.
+
+      - name: required_match_count
+        description: Number of required qualifications matched.
+
+      - name: additional_match_count
+        description: Number of additional qualifications matched.
+
+      - name: required_match_ratio
+        description: Ratio of required qualifications matched (0-1).
+
+      - name: additional_match_ratio
+        description: Ratio of additional qualifications matched (0-1).
+
+      - name: job_score
+        description: >
+          Categorical score for the job based on required_match_ratio and required_match_count.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ["high", "medium", "low"]
+
+  - name: llm_cost
+    description: Token usage and cost summary by job_id
+    columns:
+      - name: job_id
+        description: Unique identifier for the job.
+        data_tests:
+          - not_null
+      - name: flash_calls
+        description: Number of LLM calls using gemini-2.5-flash model.
+      - name: flash_lite_calls
+        description: Number of LLM calls using gemini-2.5-flash-lite model.
+      - name: flash_input_tokens
+        description: Total input tokens for gemini-2.5-flash model.
+      - name: flash_output_tokens
+        description: Total output tokens (thinking + output) for gemini-2.5-flash model.
+      - name: flash_lite_input_tokens
+        description: Total input tokens for gemini-2.5-flash-lite model.
+      - name: flash_lite_output_tokens
+        description: Total output tokens (thinking + output) for gemini-2.5-flash-lite model.
+      - name: flash_input_cost
+        description: Total input cost for gemini-2.5-flash model.
+      - name: flash_output_cost
+        description: Total output cost (thinking + output) for gemini-2.5-flash model.
+      - name: flash_lite_input_cost
+        description: Total input cost for gemini-2.5-flash-lite model.
+      - name: flash_lite_output_cost
+        description: Total output cost (thinking + output) for gemini-2.5-flash-lite model.
+      - name: total_cost
+        description: Total LLM cost for the job (all models).

@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: job_tracker
+    database: website-385913
+    schema: job_tracker
+    tables: 
+      - name: document_store
+      - name: job_assessment
+      - name: job_details
+      - name: job_quarantine
+      - name: job_runs
+      - name: job_skills
+      - name: llm_models
+      - name: llm_runs
+      - name: llm_runs_v2
+      - name: prompt
+      - name: run_findings
